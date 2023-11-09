@@ -6,7 +6,7 @@ public class SwitchCase {
         Anime anime = new Anime();
         Rating rating = new Rating();
         Scanner sc = new Scanner(System.in);
-        String option = sc.toString();
+        
 
         System.out.println("---------------------------------------");
         System.out.println("0 - Quit");
@@ -14,6 +14,9 @@ public class SwitchCase {
         System.out.println("2 - Print Anime File");
         System.out.println("3 - Print Rating File");
         System.out.println("---------------------------------------");
+
+        String option = sc.toString();
+        sc.close();
              
         switch(option){
             case "0":
@@ -21,6 +24,7 @@ public class SwitchCase {
             
             case "1":
                     anime.readFile();
+                    rating.readFile();
         }
 
     }
