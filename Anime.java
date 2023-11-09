@@ -61,8 +61,6 @@ public class Anime {
                 rating(splitedLine);
                 count();
                 members(splitedLine);
-
-
             }while(sc.hasNext());
         sc.close();  
     }
