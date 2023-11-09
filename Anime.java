@@ -30,7 +30,7 @@ public class Anime {
     }
 
     public void readFile() throws FileNotFoundException{
-        FileReader fr = new FileReader("anime.csv");
+        FileReader fr = new FileReader("CSV Files/anime.csv");
         BufferedReader br = new BufferedReader(fr);
         Scanner sc = new Scanner(br);
         String line;
