@@ -14,6 +14,7 @@ public class Anime {
     private int members;
     private int count; 
 
+
     public Anime(int id, String name, ArrayList<String> genre, String type, Integer episodes, double rating, int members) {
         this.id = id;
         this.name = name;
@@ -128,7 +129,8 @@ public class Anime {
         members = Integer.parseInt(smembers);
     }
 
-    public void print(){
+    public void print() throws FileNotFoundException{
+        readFile();
         System.out.println(id()+ " " + name() + " " + genre() + " " + type() + " " + episodes() + " " + rating() + " " + members());
     }
 
