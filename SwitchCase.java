@@ -23,7 +23,7 @@ public class SwitchCase {
                     break;
             
             case "1":
-                    anime.readFile();
+                    // anime.readFile();
                     rating.readFile();
         }
 
