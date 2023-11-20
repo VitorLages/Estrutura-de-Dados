@@ -1,13 +1,10 @@
-import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.util.Scanner;
 
 public class Rating {
-    private int userId;
-    private int animeId;
-    private int rating;
-    private int count;
+    int userId;
+    int animeId;
+    int rating;
+    int count;
     
     public Rating(int userId, int animeId, int rating) {
         this.userId = userId;
@@ -17,31 +14,6 @@ public class Rating {
 
     public Rating(){
         
-    }
-
-    public void readFile() throws FileNotFoundException{
-        FileReader fr = new FileReader("CSV Files/rating.csv");
-        BufferedReader br = new BufferedReader(fr);
-        Scanner sc = new Scanner(br);
-        String line;
-        
-
-        do{
-            line = sc.nextLine();
-            String[] splitedLine = line.split(",");
-            count = 0;
-
-            userId(splitedLine);
-            count();
-
-            animeId(splitedLine);
-            count();
-
-            rating(splitedLine);
-            count();
-
-        }while(sc.hasNext());
-        sc.close();
     }
 
     public void userId(String[] spline){
@@ -63,15 +35,15 @@ public class Rating {
         return count++;
     }
 
-    public int userId(){
+    public int getUserId(){
         return userId;
     }
 
-    public int animeId(){
+    public int getAnimeId(){
         return animeId;
     }
 
-    public int rating(){
+    public int getRating(){
         return rating;
     }
 }

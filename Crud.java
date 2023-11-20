@@ -26,6 +26,7 @@ public class Crud {
         String line;
         
             do{
+                Anime anime = new Anime();
                 anime.initgenre();
                 line = sc.nextLine();
                 String[] splitedLine = line.split(",");
@@ -54,22 +55,49 @@ public class Crud {
                 anime.rating(splitedLine);
                 anime.count();
 
-                // anime.members(splitedLine);
-                // animeList.add(anime);
-                // print1();
+                anime.members(splitedLine);
+                animeList.add(anime);
+
             }while(sc.hasNext());
-        sc.close();  
-    }
+            sc.close();
 
-    public void print(){
-        for(Anime a : animeList){
-            System.out.println(a);
-        }
+        FileReader fr1 = new FileReader("CSV Files/rating.csv");
+        BufferedReader br1 = new BufferedReader(fr1);
+        Scanner sc1 = new Scanner(br1);
+        String line1;
         
+
+        do{
+            Rating rating = new Rating();
+            line1 = sc1.nextLine();
+            String[] splitedLine = line1.split(",");
+            rating.count = 0;
+
+            rating.userId(splitedLine);
+            rating.count();
+
+            rating.animeId(splitedLine);
+            rating.count();
+
+            rating.rating(splitedLine);
+            rating.count();
+
+            ratingList.add(rating);
+
+        }while(sc1.hasNext());
+        sc1.close();  
     }
 
-    public void print1(){
-        System.out.println(anime.getId()+ " " + anime.getName() + " " + anime.getGenre() + " " + anime.getType() + " " + anime.getEpisodes() + " " + anime.getRating() + " " + anime.getMembers());
+    public void printAnime(ArrayList<Anime> animelList){
+        for(Anime a : animeList){
+            System.out.println(a.getId() + " " + a.getName() + " " + a.getGenre() + " " + a.getType() + " " + a.getCount() + " " + a.getEpisodes() + " " + a.getRating() + " " + a.getMembers());
+        }
+    }
+
+    public void printRating(){
+        for(Rating r : ratingList){
+            System.out.println(r.getUserId() + " " + r.getAnimeId() + " " + r.getRating());
+        }
     }
 
     public void create(){

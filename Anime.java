@@ -29,7 +29,6 @@ public class Anime {
         String sid;
         sid = splitedLine[count];
         sid = sid.replaceAll("\"", "");
-        System.out.println(count);
         id = Integer.parseInt(sid);
     }
 

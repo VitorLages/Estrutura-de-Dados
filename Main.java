@@ -6,9 +6,8 @@ public class Main {
         Crud crud = new Crud();
         Anime anime = new Anime();
 
-        // sw.switchcase();
-        // anime.readFile(); 
-        crud.read();
-        // crud.print();
+        sw.switchcase();
+        // crud.read();
+        // crud.printAnime(crud.animeList);
     }
 }
