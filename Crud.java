@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -88,7 +90,7 @@ public class Crud {
         sc1.close();  
     }
 
-    public void printAnime(ArrayList<Anime> animelList){
+    public void printAnime(){
         for(Anime a : animeList){
             System.out.println(a.getId() + " " + a.getName() + " " + a.getGenre() + " " + a.getType() + " " + a.getCount() + " " + a.getEpisodes() + " " + a.getRating() + " " + a.getMembers());
         }
@@ -100,12 +102,63 @@ public class Crud {
         }
     }
 
-    public void create(){
-        
+    public void create() throws IOException{
+        FileWriter fw = new FileWriter("CSV Files/anime.csv", true);
+        Scanner sc = new Scanner(System.in);
+        int id;
+        String name;
+        ArrayList<String> genre = new ArrayList<>();
+        String type;
+        int episodes;
+        double rating;
+        int members;
+
+
+        System.out.println("Provide an Id:");
+        id = sc.nextInt();
+
+        System.out.println("Provide a name:");
+        sc.nextLine();
+        name = sc.nextLine();
+
+        System.out.println("Provide the genres (Type '0' to end):");
+        String aux = "";
+        while(!aux.equals("0")){
+            aux = sc.nextLine();
+            genre.add(aux);
+        }
+
+        System.out.println("Provide a type:");
+        type = sc.nextLine();
+
+        System.out.println("Provide the number of episodes:");
+        episodes = sc.nextInt();
+
+        System.out.println("Provide a rating");
+        rating = sc.nextDouble();
+
+        System.out.println("Provide the number of members");
+        members = sc.nextInt();
+
+        sc.close();
+
+        String w = "\"" + id + ", " + name + ", " + "\"\"" + genre + "\"\"" + ", " + type + ", " + episodes + ", " + rating + ", " + members + "\";;;";
+        w = w.replace("[", "");
+        w = w.replace("]", "");
+        w = w.replace(", 0", "");
+        fw.write('\n' + w);
+        fw.close();
     }
 
-    public void update(){
-        
+    public void update() throws IOException{
+        Scanner sc = new Scanner(System.in);
+        int id = sc.nextInt();
+        FileWriter fw = new FileWriter("CSV Files/anime.csv");
+
+        for(Anime a : animeList){
+            if(a.id == id){
+            }
+        }
     }
 
     public void delete(){

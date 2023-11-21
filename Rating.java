@@ -1,5 +1,3 @@
-import java.io.FileNotFoundException;
-
 public class Rating {
     int userId;
     int animeId;
