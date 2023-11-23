@@ -9,8 +9,9 @@ public class Anime {
     public double rating;
     public int members;
     public int count;
+    public boolean exist;
     
-    public Anime(int id, String name, ArrayList<String> genre, String type, int episodes, double rating, int members) {
+    public Anime(int id, String name, ArrayList<String> genre, String type, int episodes, double rating, int members, boolean exist) {
         this.id = id;
         this.name = name;
         this.genre = genre;
@@ -19,6 +20,7 @@ public class Anime {
         this.rating = rating;
         this.members = members;
         this.count = 0;
+        this.exist = exist;
     }
 
     public Anime(){

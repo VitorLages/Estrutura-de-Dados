@@ -6,6 +6,9 @@ public class Main {
         SwitchCase sw = new SwitchCase();
         Crud crud = new Crud();
 
-        sw.switchcase();
+        // sw.switchcase();
+        crud.read();
+        // crud.printAnime();
+        crud.update();
     }
 }

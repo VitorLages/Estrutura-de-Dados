@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -58,6 +59,7 @@ public class Crud {
                 anime.count();
 
                 anime.members(splitedLine);
+                anime.exist = true;
                 animeList.add(anime);
 
             }while(sc.hasNext());
@@ -92,7 +94,7 @@ public class Crud {
 
     public void printAnime(){
         for(Anime a : animeList){
-            System.out.println(a.getId() + " " + a.getName() + " " + a.getGenre() + " " + a.getType() + " " + a.getCount() + " " + a.getEpisodes() + " " + a.getRating() + " " + a.getMembers());
+            System.out.println(a.getId() + " " + a.getName() + " " + a.getGenre() + " " + a.getType() + " " + a.getEpisodes() + " " + a.getRating() + " " + a.getMembers());
         }
     }
 
@@ -153,16 +155,52 @@ public class Crud {
     public void update() throws IOException{
         Scanner sc = new Scanner(System.in);
         int id = sc.nextInt();
-        FileWriter fw = new FileWriter("CSV Files/anime.csv");
+        int linenumber = 1;
 
         for(Anime a : animeList){
-            if(a.id == id){
-            }
+            if(a.exist = true){
+                if(a.id == id){
+                    String linefound = "\"" + a.getId() + ", " + a.getName() + ", " + "\"\"" + a.getGenre() + "\"\"" + ", " + a.getType() + ", " + a.getEpisodes() + ", " + a.getRating() + ", " + a.getMembers() + "\";;;";
+                    linefound = linefound.replace("[", "");
+                    linefound = linefound.replace("]", "");
+                    System.out.println(linefound);
+                    BufferedReader br = new BufferedReader(new FileReader("CSV Files/anime.csv"));
+                    BufferedWriter bw = new BufferedWriter(new FileWriter("CSV Files/anime.csv", true));
+                    for(int i = 1; i < linenumber; i++){
+                        br.readLine();
+                    }
+
+                    String oldline = br.readLine();
+                    bw.write(oldline);
+                    bw.newLine();
+
+                    System.out.println("Write the new line with the updated infos in the same way was written before:");
+
+
+                    sc.nextLine();
+                    String newLine = sc.nextLine();
+                    bw.write(newLine);
+                    bw.newLine();
+
+                    br.close();
+                    bw.close();
+                }
+            } else System.out.println("This id was deleted");
+            linenumber++;
         }
+        sc.close();
     }
 
     public void delete(){
-        
+        Scanner sc = new Scanner(System.in);
+        int id = sc.nextInt();
+
+        for(Anime a : animeList){
+            if(a.id == id){
+                a.exist = false;
+            } else System.out.println("This id does not exist");
+        }
+        sc.close();
     }
 
 }
