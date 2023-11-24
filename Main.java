@@ -9,6 +9,6 @@ public class Main {
         // sw.switchcase();
         crud.read();
         // crud.printAnime();
-        crud.update();
+        crud.update(); 
     }
 }
